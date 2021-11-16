@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "Sherlock": "sherlock-bd2bc",
+    "default": "sherlock-bd2bc"
+  },
+  "targets": {}
+}

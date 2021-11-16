@@ -1,0 +1,58 @@
+<article id="case-item-{{index}}" class="postcard dark blue">
+  <a class="postcard__img_link" href="#">
+    <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+  </a>
+  <div class="postcard__text">
+    <h1 class="postcard__title blue"><a (click)="goCase(case.id)">Podcast Title - {{case.id}}</a></h1>
+    <div class="postcard__subtitle small">
+      <time datetime="2020-05-25 12:00:00">
+        <i class="fas fa-calendar-alt mr-2"></i>{{case.timestamp | firebaseTimestamp}}
+      </time>
+    </div>
+    <div class="animated fadeIn">
+      <div class="row">
+      </div>
+    </div>
+    <div class="postcard__bar"></div>
+    <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+    <!-- Nav tabs -->
+    <nav ngbNav #nav="ngbNav" class="nav-tabs">
+      <ng-container ngbNavItem>
+        <a ngbNavLink><i class="cil-face-dead mr-2"></i> Victim </a>
+        <ng-template ngbNavContent>
+          <p>Victims</p>
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem>
+        <a ngbNavLink><i class="cil-contact mr-2"></i> Suspects </a>
+        <ng-template ngbNavContent>
+          Suspects
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem>
+        <a ngbNavLink><i class="fa fa-eye mr-2"></i> Witnesses </a>
+        <ng-template ngbNavContent>
+          Witnesses
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem>
+        <a ngbNavLink><i class="cil-zoom mr-2"></i> Clues </a>
+        <ng-template ngbNavContent>
+          Clues
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem>
+        <a ngbNavLink><i class="cil-media-play mr-2"></i> Solve </a>
+        <ng-template ngbNavContent>
+          Solve
+        </ng-template>
+      </ng-container>
+    </nav>
+    <div [ngbNavOutlet]="nav"></div>
+    <!--            <ul class="postcard__tagbox">-->
+    <!--              <li class="tag__item play blue">-->
+    <!--                <a href="#"><i class="cil-media-play mr-2"></i>Play</a>-->
+    <!--              </li>-->
+    <!--            </ul>-->
+  </div>
+</article>

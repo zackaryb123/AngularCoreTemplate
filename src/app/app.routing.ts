@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
-import { DefaultLayoutComponent } from './containers';
+import { MainAppComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import {FirebaseResolver} from './core/auth/firebase/firebase.resolver';
+import {FirebaseGuard} from './core/auth/firebase/firebase.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'cases',
     pathMatch: 'full',
   },
   {
@@ -32,6 +34,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    resolve: [FirebaseResolver],
     data: {
       title: 'Login Page'
     }
@@ -45,11 +48,20 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: MainAppComponent,
+    canActivate: [FirebaseGuard],
     data: {
       title: 'Home'
     },
     children: [
+      {
+        path: 'cases',
+        loadChildren: () => import('./views/app/cases/cases.module').then(m => m.CasesModule)
+      },
+      {
+        path: 'case:id',
+        loadChildren: () => import('./views/app/case/case.module').then(m => m.CaseModule)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)

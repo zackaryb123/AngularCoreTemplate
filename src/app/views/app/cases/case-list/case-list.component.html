@@ -1,0 +1,66 @@
+<div class="animated fadeIn">
+  <ng-container *ngIf="infinite | async as cases">
+    <cdk-virtual-scroll-viewport
+      id="cdk-virtual-scroll-viewport-case-list"
+      class="gkz-viewport"
+      (scroll)="checkResize()"
+      [itemSize]="itemSize"
+      (scrolledIndexChange)="getNextBatch($event, cases[cases.length - 1].id)">
+      <ng-container *cdkVirtualFor="let _case of cases; let i = index; trackBy: tracByIdx">
+        <article id="case-item-{{i}}" class="postcard dark blue">
+          <a class="postcard__img_link" href="#">
+            <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+          </a>
+          <div class="postcard__text">
+            <h1 class="postcard__title blue"><a (click)="goCase(_case.id)">Podcast Title - {{_case.id}}</a></h1>
+            <div class="postcard__subtitle small">
+              <time datetime="2020-05-25 12:00:00">
+                <i class="fas fa-calendar-alt mr-2"></i>{{_case.timestamp | firebaseTimestamp}}
+              </time>
+            </div>
+            <div class="animated fadeIn">
+              <div class="row">
+              </div>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+            <!-- Nav tabs -->
+            <nav ngbNav #nav="ngbNav" class="nav-tabs">
+              <ng-container ngbNavItem>
+                <a ngbNavLink><i class="cil-face-dead mr-2"></i> Victim </a>
+                <ng-template ngbNavContent>
+                  <app-victim-card></app-victim-card>
+                </ng-template> 
+              </ng-container>
+              <ng-container ngbNavItem>
+                <a ngbNavLink><i class="cil-contact mr-2"></i> Suspects </a>
+                <ng-template ngbNavContent>
+                  <app-suspects-list></app-suspects-list>
+                </ng-template>
+              </ng-container>
+              <ng-container ngbNavItem>
+                <a ngbNavLink><i class="fa fa-eye mr-2"></i> Witnesses </a>
+                <ng-template ngbNavContent>
+                  <app-witness-list></app-witness-list>
+                </ng-template>
+              </ng-container>
+              <ng-container ngbNavItem>
+                <a ngbNavLink><i class="cil-zoom mr-2"></i> Clues </a>
+                <ng-template ngbNavContent>
+                  Clues
+                </ng-template>
+              </ng-container>
+              <ng-container ngbNavItem>
+                <a ngbNavLink><i class="cil-media-play mr-2"></i> Solve </a>
+                <ng-template ngbNavContent>
+                  <app-solve-case-form></app-solve-case-form>
+                </ng-template>
+              </ng-container>
+            </nav>
+            <div [ngbNavOutlet]="nav"></div>
+          </div>
+        </article>
+      </ng-container>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
+</div>

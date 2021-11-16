@@ -13,10 +13,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
-import { AppComponent } from './app.component';
-
 // Import containers
-import { DefaultLayoutComponent } from './containers';
+import { DefaultLayoutComponent, MainAppComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -24,7 +22,8 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
-  DefaultLayoutComponent
+  DefaultLayoutComponent,
+  MainAppComponent
 ];
 
 import {
@@ -42,6 +41,17 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire';
+import {AppComponent} from './app.component';
+import { environment } from '../environments/environment';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FirebaseResolver} from './core/auth/firebase/firebase.resolver';
+import {FirebaseGuard} from './core/auth/firebase/firebase.guard';
+
+import {CaseModule} from './views/app/case/case.module';
+import {CasesModule} from './views/app/cases/cases.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -59,6 +69,13 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    CasesModule,
+    CaseModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    NgbModule
   ],
   declarations: [
     AppComponent,
@@ -74,6 +91,8 @@ import { ChartsModule } from 'ng2-charts';
       useClass: HashLocationStrategy
     },
     IconSetService,
+    FirebaseResolver,
+    FirebaseGuard
   ],
   bootstrap: [ AppComponent ]
 })
