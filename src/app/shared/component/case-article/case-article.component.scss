@@ -124,11 +124,12 @@
     }
 
     .postcard__preview-txt {
-      overflow: hidden;
       text-overflow: ellipsis;
       text-align: justify;
       //height: 100%;
       margin-bottom: 1rem;
+      max-height: 5rem;
+      overflow-y: auto;
     }
 
     .postcard__tagbox {

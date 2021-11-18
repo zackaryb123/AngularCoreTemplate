@@ -109,4 +109,7 @@ export class CaseListComponent implements OnInit, OnDestroy {
     }
   }
 
+  goCase(id) {
+    return this.router.navigateByUrl(`/case:${id}`);
+  }
 }

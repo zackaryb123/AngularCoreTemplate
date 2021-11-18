@@ -6,6 +6,7 @@ import {CasesComponent} from './cases.component';
 import {CaseListComponent} from './case-list/case-list.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [CasesComponent, CaseListComponent],
@@ -14,7 +15,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     SharedModule,
     CasesRoutingModule,
     NgbNavModule,
-    ScrollingModule
+    ScrollingModule,
+    TooltipModule
   ],
   providers: [
   ]

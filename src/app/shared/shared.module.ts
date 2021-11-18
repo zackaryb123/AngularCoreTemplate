@@ -10,6 +10,8 @@ import { VictimCardComponent } from './component/victim-card/victim-card.compone
 import { SuspectsListComponent } from './component/suspects-list/suspects-list.component';
 import { WitnessListComponent } from './component/witness-list/witness-list.component';
 import { SolveCaseFormComponent } from './component/solve-case-form/solve-case-form.component';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { MurderWeaponListComponent } from './component/murder-weapon-list/murder-weapon-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { SolveCaseFormComponent } from './component/solve-case-form/solve-case-f
     VictimCardComponent,
     SuspectsListComponent,
     WitnessListComponent,
-    SolveCaseFormComponent
+    SolveCaseFormComponent,
+    MurderWeaponListComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { SolveCaseFormComponent } from './component/solve-case-form/solve-case-f
     ScrollingModule,
     CdkScrollableModule,
     TabsModule.forRoot(),
-    NgbNavModule
+    NgbNavModule,
+    TooltipModule
   ],
   exports: [
     FirebaseTimestampPipe,
@@ -34,7 +38,8 @@ import { SolveCaseFormComponent } from './component/solve-case-form/solve-case-f
     VictimCardComponent,
     SuspectsListComponent,
     WitnessListComponent,
-    SolveCaseFormComponent
+    SolveCaseFormComponent,
+    MurderWeaponListComponent
   ],
   providers: [
     DatePipe,

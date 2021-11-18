@@ -1,35 +1,20 @@
 export interface Case {
-  title: string;
-  description: string;
-  clues: Clue[];
-  murderWeapons: MurderWeapon[];
-  questions: ClueQuestion[];
-  suspects: Suspect[];
-  victim: Victim;
-  witnesses: Witness[];
+  id: string;
   timestamp: string;
-}
-
-export interface Clue {
-  clue: string;
-}
-
-export interface MurderWeapon {
-  weapon: string;
-}
-
-export interface ClueQuestion {
-  question: string;
+  title: string;
+  plot: string;
+  victim: Victim;
+  suspects: Suspect[];
+  witnesses: Witness[];
+  clues: string[]; // guessing game form
+  murderWeapon: string;
+  criminal: string; // name of suspect
 }
 
 export interface Suspect {
   age: string;
   education: string;
-  ethnic: string;
-  family: FamilyMember[];
-  friends: Friend[];
-  interest: string[];
-  dislikes: string[];
+  interrogation: [];
   maritalStatus: string;
   occupation: string;
   residence: string;
@@ -39,42 +24,16 @@ export interface Suspect {
 export interface Victim {
   age: string;
   education: string;
-  ethnic: string;
-  family: FamilyMember[];
-  friends: Friend[];
-  interest: string[];
-  dislikes: string[];
+  evidence: string[]; // Gives away clue evidence (answer clue questions unlock more details)
   maritalStatus: string;
   occupation: string;
   residence: string;
 }
 
-export interface FamilyMember {
-  age: string;
-  occupation: string;
-  residence: string;
-  education: string;
-  thoughts: string[];
-  alibi: string;
-}
-
-export interface Friend {
-  age: string;
-  occupation: string;
-  residence: string;
-  education: string;
-  thoughts: string[];
-  alibi: string;
-}
-
 export interface Witness {
   age: string;
   education: string;
-  ethnic: string;
-  family: FamilyMember[];
-  friends: Friend[];
-  interest: string[];
-  dislikes: string[];
+  views: string[];
   maritalStatus: string;
   occupation: string;
   residence: string;

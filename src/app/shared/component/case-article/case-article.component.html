@@ -3,7 +3,7 @@
     <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
   </a>
   <div class="postcard__text">
-    <h1 class="postcard__title blue"><a (click)="goCase(case.id)">Podcast Title - {{case.id}}</a></h1>
+    <h1 class="postcard__title blue"><a (click)="goCase(case.id)">Podcast Title</a></h1>
     <div class="postcard__subtitle small">
       <time datetime="2020-05-25 12:00:00">
         <i class="fas fa-calendar-alt mr-2"></i>{{case.timestamp | firebaseTimestamp}}
@@ -18,41 +18,59 @@
     <!-- Nav tabs -->
     <nav ngbNav #nav="ngbNav" class="nav-tabs">
       <ng-container ngbNavItem>
-        <a ngbNavLink><i class="cil-face-dead mr-2"></i> Victim </a>
+        <a ngbNavLink tooltip="Victim"><i class="cil-face-dead"></i></a>
         <ng-template ngbNavContent>
-          <p>Victims</p>
+          <app-victim-card></app-victim-card>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink><i class="cil-contact mr-2"></i> Suspects </a>
+        <a ngbNavLink tooltip="Suspects"><i class="cil-contact"></i></a>
         <ng-template ngbNavContent>
-          Suspects
+          <app-suspects-list></app-suspects-list>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink><i class="fa fa-eye mr-2"></i> Witnesses </a>
+        <a ngbNavLink tooltip="Witnesses"><i class="fa fa-eye"></i></a>
         <ng-template ngbNavContent>
-          Witnesses
+          <app-witness-list></app-witness-list>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink><i class="cil-zoom mr-2"></i> Clues </a>
+        <a ngbNavLink tooltip="Clues"><i class="cil-zoom"></i></a>
         <ng-template ngbNavContent>
           Clues
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem>
-        <a ngbNavLink><i class="cil-media-play mr-2"></i> Solve </a>
+        <a ngbNavLink tooltip="Solve"><i class="cil-media-play"></i></a>
         <ng-template ngbNavContent>
-          Solve
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item" [class.active]="currentSlide === 1">
+                <div class="text-center"><span>Suspect</span></div>
+                <app-solve-case-form></app-solve-case-form>
+              </div>
+              <div class="carousel-item" [class.active]="currentSlide === 2">
+                <div class="text-center"><span>Murder Weapon</span></div>
+                <app-murder-weapon-list></app-murder-weapon-list>
+              </div>
+              <div class="carousel-item" [class.active]="currentSlide === 3">
+                <div class="text-center"><span>Solve</span></div>
+                <button style="margin: 0 auto; max-width: 17rem;" class="btn btn-block btn-primary" (click)="solve()"> <i class="cil-media-play"></i></button>
+              </div>
+            </div>
+            <a class="carousel-control-prev position-absolute d-block" style="width: 0" role="button" data-slide="prev" (click)="prevSlide()">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next position-absolute d-block" style="width: 0; right: 20px;" role="button" data-slide="next" (click)="nextSlide()">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </ng-template>
       </ng-container>
     </nav>
     <div [ngbNavOutlet]="nav"></div>
-    <!--            <ul class="postcard__tagbox">-->
-    <!--              <li class="tag__item play blue">-->
-    <!--                <a href="#"><i class="cil-media-play mr-2"></i>Play</a>-->
-    <!--              </li>-->
-    <!--            </ul>-->
   </div>
 </article>

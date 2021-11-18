@@ -52,6 +52,9 @@ import {FirebaseGuard} from './core/auth/firebase/firebase.guard';
 import {CaseModule} from './views/app/case/case.module';
 import {CasesModule} from './views/app/cases/cases.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LeaderboardsComponent } from './views/app/leaderboards/leaderboards.component';
+import { InspectComponent } from './views/app/inspect/inspect.component';
+import { ProfileComponent } from './views/app/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -83,7 +86,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LeaderboardsComponent,
+    InspectComponent,
+    ProfileComponent
   ],
   providers: [
     {
