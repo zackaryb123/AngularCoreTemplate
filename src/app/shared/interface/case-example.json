@@ -9,16 +9,7 @@
       "name": "Clifton Curry",
       "age": "33",
       "description": "Best keep everyone in order",
-      "connections": [
-        {
-          "who": "",
-          "why": ""
-        },
-        {
-          "who": "",
-          "why": ""
-        }
-      ]
+      "about": "I am Clifton Curry, aged 33, a young wheeler dealer businessman. I am very commercially astute and streetwise. I have a passion for fast cars, the high life, and beautiful women. \n My step-brother, Professor Emmelius Bunsen, asked for my help in setting up a commercial concern to develop and sell products made from the Pungent Pumpkin. I leapt at the chance to help him out. However my step-brother and I could only contribute a certain amount to the financing of the business, and so we need a backer to assist us. \n Fortunately I have been building up relationship with Lady Fading, a mature society beauty who also happens to be a wealthy divorcee. She agreed to help finance our business. I am now Managing Director of the Pungent Pumpkin Processing Company and I own 24% of the company shares."
     },
     "suspects": [
       {
@@ -42,7 +33,7 @@
         "age": "33",
         "duty": "Marketing Agent",
         "description": "A bit of a glamour girl",
-        "about": "",
+        "about": "I am Gigi Sparkle, aged 28. After taking a marketing degree at the London Business School and passing with top honours, I headed to Paris and obtained a buyer's job with the fashion company \"Chantal\". From there I moved to New York and a marketing role with \"Swish\", the cutting edge fashion magazine. I became one of their most valuable employees and they were sorry to see me go when I went to set up the new international sales department at \"Lustful Lingerie\" Ltd. Versatility is my middle name! \n Recently I have taken the plunge and set up my own business. Called \"Sizzling Sex\", I specialise in providing raunchy advertising and marketing campaigns to put some sizzle onto otherwise mundane products. I have been called in to help Pungent Pumpkin Processing Company with launching their two latest products, an athlete's foot treatment and a salami sauce. At great expense I have pulled off a coupe and persuaded the super sexy sports star, Lloyd Lunchbox, to become the face of Pungent Pumpkin Products!",
         "plea": "Ciao darling! I am Gigi Sparkle, creative force behind the “Super Sparkle” Marketing Agency. I provide all the marketing for the Pungent Pumpkin Processing Company – which includes hiring the celebrated hurdler Lloyd Lunchbox to be the face of Pungent Pumpkin Products! Clifton was incredibly impressed by this. Although some people say I am a ruthless, vengeful businesswoman, I am really sad that Clifton is dead – even though he was extremely forgetful about paying my invoices!"
       },
       {
@@ -50,15 +41,15 @@
         "age": "??",
         "duty": "Chairwomen and Chief Shareholder",
         "description": "Take a joke against herself",
-        "about": "",
-        "plea": "I am Lady “Beauty” Fading and my heart is broken! Clifton Curry was my boyfriend and the man I intended to marry. We met in St Tropez when I was cruising on my yacht (I am a very wealthy divorcee). And we hit it off at once. He was, of course, a few years younger than myself, but that didn’t matter to either of us. To show my love for him, I provided half of the funding for the Pungent Pumpkin Processing Company. I am therefore the Chief Shareholder and own 52% of the shares. But I would surrender them all to have my boyfriend back for just a minute!"
+        "about": "I am Lady \"Beauty\" Fading, a wealthy divorcee and society beauty who regularly appears in the pages of fashion magazines. I am not prepares to reveal my true age. It is sufficient to say that I am of \"mature\" years and that these days a builder's towel forms part of my makeup routine. It has even been rumoured that a famous cosmetics firm have started wondering if I really am worth it! However I have an enormous zest for life, and I am always trying to recapture the days of my youth when men fell in love with me at every turn. \n I have a country estate in Surrey, just outside the town of Slappiton Thycke. I am partial to the high life, and even more partial to young men. Usually I pick them up and discard them at an alarming rate. However just over a year ago I met Clifton Curry, and for once I am the smitten one! I have even been wondering if he is the man I will finally settle down with in my twilight years! \n To show my commitment to him. I have provided the financing for his company. I own 52% of the shares in the Pungent Pumpkin Processing Company. I am also the company Chairwoman. However this really involves nothing more than attending a few board meetings and signing letters prepared for me by secretary Mavis Cheek.",
+        "plea": "I am Lady “Beauty” Fading and my heart is broken! Clifton Curry was my boyfriend and the man I intended to marry. We met in St Tropez when I was cruising on my yacht (I am a very wealthy divorcee). And we hit it off at once. He was, of course, a few years younger than myself, but that didn't matter to either of us. To show my love for him, I provided half of the funding for the Pungent Pumpkin Processing Company. I am therefore the Chief Shareholder and own 52% of the shares. But I would surrender them all to have my boyfriend back for just a minute!"
       },
       {
         "name": "Mavis Cheek",
         "age": "32",
         "duty": "Director Secretary",
         "description": "Hidden depths",
-        "about": "",
+        "about": "I am Mavis Cheek, aged 32. I have recently been employed as a secretary to the directors at the Pungent Pumpkin Processing Company Despite my meek and mild exterior, I am extremely efficient and intelligent, and like any good secretary, I can manipulate my bosses around my little finger. This is just as well as they are not very well organised! \n I live with my aging mother in a small flat. In my spare time I enjoy crocheting reading Mills and Boon and composing my own romatic fiction. I secretly dream of being whisked away by a tall, handsome, mature man, or becoming an independent business women and leading a glamorous life. Since starting with the company, I have been involved in extensive liaison with Gigi Sparkle, owner of the marketing agency that the company uses. She is they type of high powered, seductive, career girl that I admire.",
         "plea": "Good day. I am Mavis Cheek, secretary to the directors of the Pungent Pumpkin Processing Company. I am very efficient and intelligent, and able to wrap my bosses around my little finger! I am really the power behind the scenes, and most of Clifton’s success was due to me. Precious little thanks I got from him though. I hate ingratitude! Still, now he is dead, I will come into my own. I am sure Professor Bunsen will give me a free hand, and I will effectively be the Managing Director of the company! With remuneration to match!"
       },
       {
@@ -66,7 +57,7 @@
         "age": "25",
         "duty": "Sports Star",
         "description": "A bit sporty",
-        "about": "",
+        "about": "I am Lloyd Lunchbox, aged 25, star of the athletics track. I  have been trained since the age of fourteen, and two years ago I took the silver medal in the 110m hurdles at the commonwealth games. Unffortunaltey afterwards I tested positive for drugs and I was stripped of my prize. Determiend to prove my innocence, I went through a long cour battle, and my conviction was finally overturned a few months ago. I am now training extra hard, hoping to make a comeback in time for the Olympics. \n I have agreed to Gigi Sparkle's proposal to become the new face of the Pungent Pumpkins. It is not exactly my first choice of product to endorse, but the drug scandal has affected my marketability. However I have been impressed with the diverse range of products the company is developing. \n I am well known for the impressive way I fill my lycra shorts. Gigi is planning to make this the focus of her campaign.",
         "plea": "High five buddy! I am Lloyd Lunchbox, a silver medallist hurdler from the Commonwealth Games. I have been signed up by Gigi Sparkle to be the face of the Pungent Pumpkin Processing Company – and to recommend their products wherever I go. It is not exactly my first choice of sponsorship, but a recent drug scandal has affected my marketability. Fortunately I got my ban overturned. I am shocked by Clifton Curry’s death, but I can’t afford to let it interfere with my training and quest for gold at the next Olympics."
       }
     ],
@@ -85,14 +76,17 @@
       ],
       "interrogation": [
         {
+          "suspect": "Lloyd Lunchbox",
           "question": "Lloyd, immediately after the toast was made, its said you were acting very strangely. You hiccuped a lot, then sat down very suddenly. Were you feeling unwell?",
           "answer": "open clue one"
         },
         {
+          "suspect": "Gigi Sparkle",
           "question": "Gigi Sparkle, early tonight did you hand Clifton Curry a small tablet. Clifton put it away in his jacket pocket. Can you tell me what it was?",
           "answer": "open clue two"
         },
         {
+          "suspect": "Professor Bunsen",
           "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
           "answer": "open clue three"
         }
