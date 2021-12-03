@@ -1,6 +1,7 @@
 <div class="animated fadeIn">
   <ng-container *ngIf="infinite | async as cases">
     <cdk-virtual-scroll-viewport
+      *ngIf="cases.length > 0"
       id="cdk-virtual-scroll-viewport-case-list"
       class="gkz-viewport"
       (scroll)="checkResize()"

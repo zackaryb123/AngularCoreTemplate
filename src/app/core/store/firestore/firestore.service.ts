@@ -40,7 +40,7 @@ export class FirestoreService {
         id: caseDoc.ref.id,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         title: `Case ${index}`,
-        plot: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!\n',
+        plot: '',
         victim: {
           age: Math.random(),
           education: 'Collage - Computer Science',
@@ -97,6 +97,8 @@ export class FirestoreService {
             occupation: 'Developer',
             residence: 'Atlanta, Ga',
             views: [
+              '',
+              '',
               ''
             ]
           },
@@ -107,6 +109,8 @@ export class FirestoreService {
             occupation: 'Developer',
             residence: 'Atlanta, Ga',
             views: [
+              '',
+              '',
               ''
             ]
           },
@@ -117,6 +121,8 @@ export class FirestoreService {
             occupation: 'Developer',
             residence: 'Atlanta, Ga',
             views: [
+              '',
+              '',
               ''
             ]
           },
@@ -128,14 +134,14 @@ export class FirestoreService {
             unlock: '' // murder weapon is reveled
           },
           {
-            interrogationQuestion: 'Who\'s alibi is right?', // can keep guessing until wrong (false alibi's should be included)
+            interrogationQuestion: 'Who is the criminal?', // one guess at who the criminal is (if wrong...)
             answer: 'suspect name',
-            unlock: '' // remove one suspect from list
+            unlock: '' // one guess for win
           },
           {
             witnessConclusion: 'Who saw the crime?', // reference should be revealed (job, education, marital, age, residence)
             answer: '',
-            unlock: '' // dynamic
+            unlock: '' // reveal connection to suspect
           }
         ],
         murderWeapon: '1',

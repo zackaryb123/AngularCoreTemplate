@@ -11,6 +11,15 @@ export interface Case {
   criminal: string; // name of suspect
 }
 
+export interface Victim {
+  age: string;
+  education: string;
+  evidence: string[]; // Gives away clue evidence (answer clue questions unlock more details)
+  maritalStatus: string;
+  occupation: string;
+  residence: string;
+}
+
 export interface Suspect {
   age: string;
   education: string;
@@ -19,15 +28,6 @@ export interface Suspect {
   occupation: string;
   residence: string;
   alibi: string;
-}
-
-export interface Victim {
-  age: string;
-  education: string;
-  evidence: string[]; // Gives away clue evidence (answer clue questions unlock more details)
-  maritalStatus: string;
-  occupation: string;
-  residence: string;
 }
 
 export interface Witness {

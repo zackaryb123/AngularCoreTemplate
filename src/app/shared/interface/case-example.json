@@ -1,0 +1,134 @@
+[
+  {
+    "id": "1234567890",
+    "timestamp": "",
+    "title": "THE PUNGENT PUMPKIN POISONER",
+    "plot": "The Pungent Pumpkin Processing Company\" is celebrating its first anniversary.  Founders, Friends and Associates have gathered together in a luxury restaurant to toast the company's success and to mark the launch of the company's two latest products. But one member of the company is about to find out that \"Pungent Pumpkin Rat Poison\" is lethal!",
+    "crime": "Clifton Curry, Managing Director of the Pungent Pumpkin Processing Company, has been horribly murdered. Poisoned, by Pungent Pumpkin Rat Poison! The poison was administered to him in one of the company’s own products. And the murderer must have been one of his work colleagues or associates.",
+    "victim": {
+      "name": "Clifton Curry",
+      "age": "33",
+      "description": "Best keep everyone in order",
+      "connections": [
+        {
+          "who": "",
+          "why": ""
+        },
+        {
+          "who": "",
+          "why": ""
+        }
+      ]
+    },
+    "suspects": [
+      {
+        "name": "Sir Hamish Hogwash",
+        "age": "60",
+        "duty": "Chief Supply Agent",
+        "description": "A bit of an old rogue",
+        "about": "I am Sir Hogwash, an amateur botanist living in a dilapidated manor house in Yorkshire. The Hogwashes made there fortune in the eighteenth century owning a plantation on the remote pacific island of Tunga Wonga. However since then a long line of gambling caused the family fortune to dwindle. I take after these ancestors. \n My cousin lives on the plantation on Tunga Wonga. Recently a foreign power has started dumping nuclear fuel on the island. Since this began, the local \"pungent pumpkins\", have been behaving strangely. Knowing my botanic interest, mu cousin sent me some pumpkins to experiment with. Their properties were so astounding, I quickly realised that they had phenomenal commercial potential and I sent them to the famous scientist Professor Emmelius Bunsen to investigate properly. The end result has been that the Hogwashes now earn their entire income from importing pungent pumpkins form Tunga Wonga and selling the to the Pungent Pumpkin Processing Company.",
+        "plea": "How do you do. I am Sir Hamish Hogwash, aged 60. The Hogwash family own the island of Tunga Wonga in the far off Pacific ocean. It is on this island that the Pungent Pumpkins grow. I sell these pumpkins to the Pungent Pumpkin Processing Company, and am therefore their Chief Pumpkin Supply Agent. I did not much like Clifton. I do not feel he paid me a fair price for my pumpkins. And neither did I like his personal habits – he was always scratching between his toes!"
+      },
+      {
+        "name": "Professor Bunsen",
+        "age": "46",
+        "duty": "Research and Development Director",
+        "description": "A bit of a bright spark",
+        "about": "I am Professor Emmelius Bunsen, aged 46, a famous scientist who specialises in experimenting with vegetable matter. In my youth I achieved a first class degree at Cambridge University with my thesis on \"The Importance of vegetable dyes in the textile industry\". The textile industry remains my first love, and I am excited by anything that remotely involves cloth manufacturing. \n Sir Hamish Hogwash sent me some Pungent Pumpkins to dissect and experiment with. I was astonished by the results. This amazing vegetable has diverse and fantastic properties and I have used them to produce an abundant range of products, all with",
+        "plea": "Ah, hello there. I am Professor Bunsen, the Research & Development Director of the Pungent Pumpkin Processing Company. I am responsible for creating all the exciting and diverse products derived from the pungent pumpkin. Clifton was my step-brother. We each owned 24% of the shares in the company. I assume that his shares will now come to me. With Clifton having all the business expertise and commercial knowledge, I sometimes felt a little overshadowed by my step-brother. But I am sincerely sorry that he is dead."
+      },
+      {
+        "name": "Gigi Sparkle",
+        "age": "33",
+        "duty": "Marketing Agent",
+        "description": "A bit of a glamour girl",
+        "about": "",
+        "plea": "Ciao darling! I am Gigi Sparkle, creative force behind the “Super Sparkle” Marketing Agency. I provide all the marketing for the Pungent Pumpkin Processing Company – which includes hiring the celebrated hurdler Lloyd Lunchbox to be the face of Pungent Pumpkin Products! Clifton was incredibly impressed by this. Although some people say I am a ruthless, vengeful businesswoman, I am really sad that Clifton is dead – even though he was extremely forgetful about paying my invoices!"
+      },
+      {
+        "name": "Lady \"Beauty\" Fading",
+        "age": "??",
+        "duty": "Chairwomen and Chief Shareholder",
+        "description": "Take a joke against herself",
+        "about": "",
+        "plea": "I am Lady “Beauty” Fading and my heart is broken! Clifton Curry was my boyfriend and the man I intended to marry. We met in St Tropez when I was cruising on my yacht (I am a very wealthy divorcee). And we hit it off at once. He was, of course, a few years younger than myself, but that didn’t matter to either of us. To show my love for him, I provided half of the funding for the Pungent Pumpkin Processing Company. I am therefore the Chief Shareholder and own 52% of the shares. But I would surrender them all to have my boyfriend back for just a minute!"
+      },
+      {
+        "name": "Mavis Cheek",
+        "age": "32",
+        "duty": "Director Secretary",
+        "description": "Hidden depths",
+        "about": "",
+        "plea": "Good day. I am Mavis Cheek, secretary to the directors of the Pungent Pumpkin Processing Company. I am very efficient and intelligent, and able to wrap my bosses around my little finger! I am really the power behind the scenes, and most of Clifton’s success was due to me. Precious little thanks I got from him though. I hate ingratitude! Still, now he is dead, I will come into my own. I am sure Professor Bunsen will give me a free hand, and I will effectively be the Managing Director of the company! With remuneration to match!"
+      },
+      {
+        "name": "Lloyd Lunchbox",
+        "age": "25",
+        "duty": "Sports Star",
+        "description": "A bit sporty",
+        "about": "",
+        "plea": "High five buddy! I am Lloyd Lunchbox, a silver medallist hurdler from the Commonwealth Games. I have been signed up by Gigi Sparkle to be the face of the Pungent Pumpkin Processing Company – and to recommend their products wherever I go. It is not exactly my first choice of sponsorship, but a recent drug scandal has affected my marketability. Fortunately I got my ban overturned. I am shocked by Clifton Curry’s death, but I can’t afford to let it interfere with my training and quest for gold at the next Olympics."
+      }
+    ],
+    "murderWeapons": [
+      { },
+      { },
+      { }
+    ],
+    "game": {
+      "about": "Formed about exactly a year ago today, the company's purpose is to develop and sell a diverse range of commercial and industrial products derived from that fantastic freak of nature, the Pungent Pumpkin of Tunga Wonga.",
+      "history": "The fist two Pungent Pumpkin products hit the market earlier this year to tremendous acclaim. \"Pungent Pumpkin Oven Cleaner\" can now be found in every respectable kitchen in the land, while \"Pungent Pumpkin Battery Acid\" has revolutionised the  transport industry. However the company is very excited by the imminent of there next two world class products, \"Pungent Pumpkin Athletes Foot Cream\" and \"Pungent Pumpkin Salami Sauce\".",
+      "events": [
+        "A fabulous launch campaign for these products has been created by Gigi Sparkle, creative force behind the \"Sizzling Sex\" marketing agency. Gigi has successfully Signed up top sports star Lloyd Lunchbox to be the new face of Pungent Pumpkin Products. Soon Lloyd will be showing off his saucy salami on billboards all around the country",
+        "The continued provision of pumpkins to the company looks secure, due to the hard work and endeavours of Chief supply agent, Sir Hamish Hogwash",
+        "A whole host of exciting new products are waiting in the pipeline, including such diverse items as \"Aftershave Face Lift Cream\", \"Cotton Dye\" and \"Rat Poison\"."
+      ],
+      "interrogation": [
+        {
+          "question": "Lloyd, immediately after the toast was made, its said you were acting very strangely. You hiccuped a lot, then sat down very suddenly. Were you feeling unwell?",
+          "answer": "open clue one"
+        },
+        {
+          "question": "Gigi Sparkle, early tonight did you hand Clifton Curry a small tablet. Clifton put it away in his jacket pocket. Can you tell me what it was?",
+          "answer": "open clue two"
+        },
+        {
+          "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
+          "answer": "open clue three"
+        }
+      ],
+      "clues": [
+        {
+          "type": "",
+          "clue": ""
+        },
+        {
+          "type": "",
+          "clue": ""
+        },
+        {
+          "type": "",
+          "clue": ""
+        }
+      ],
+      "evidence": [
+        "",
+        "",
+        ""
+      ],
+      "motives": [
+        "Financial Gain",
+        "Hate",
+        "Homicidal Mania",
+        "Jealousy",
+        "Tragic Accident",
+        "Vengeance"
+      ],
+      "results": {
+        "murderWeapon": "Poison",
+        "criminal": "Professor Bunse",
+        "motive": "Jealousy"
+      }
+    }
+  }
+]
