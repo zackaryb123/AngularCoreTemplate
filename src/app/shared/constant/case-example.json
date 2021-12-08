@@ -29,14 +29,6 @@
         "plea": "Ah, hello there. I am Professor Bunsen, the Research & Development Director of the Pungent Pumpkin Processing Company. I am responsible for creating all the exciting and diverse products derived from the pungent pumpkin. Clifton was my step-brother. We each owned 24% of the shares in the company. I assume that his shares will now come to me. With Clifton having all the business expertise and commercial knowledge, I sometimes felt a little overshadowed by my step-brother. But I am sincerely sorry that he is dead."
       },
       {
-        "name": "Gigi Sparkle",
-        "age": "33",
-        "duty": "Marketing Agent",
-        "description": "A bit of a glamour girl",
-        "about": "I am Gigi Sparkle, aged 28. After taking a marketing degree at the London Business School and passing with top honours, I headed to Paris and obtained a buyer's job with the fashion company \"Chantal\". From there I moved to New York and a marketing role with \"Swish\", the cutting edge fashion magazine. I became one of their most valuable employees and they were sorry to see me go when I went to set up the new international sales department at \"Lustful Lingerie\" Ltd. Versatility is my middle name! \n Recently I have taken the plunge and set up my own business. Called \"Sizzling Sex\", I specialise in providing raunchy advertising and marketing campaigns to put some sizzle onto otherwise mundane products. I have been called in to help Pungent Pumpkin Processing Company with launching their two latest products, an athlete's foot treatment and a salami sauce. At great expense I have pulled off a coupe and persuaded the super sexy sports star, Lloyd Lunchbox, to become the face of Pungent Pumpkin Products!",
-        "plea": "Ciao darling! I am Gigi Sparkle, creative force behind the “Super Sparkle” Marketing Agency. I provide all the marketing for the Pungent Pumpkin Processing Company – which includes hiring the celebrated hurdler Lloyd Lunchbox to be the face of Pungent Pumpkin Products! Clifton was incredibly impressed by this. Although some people say I am a ruthless, vengeful businesswoman, I am really sad that Clifton is dead – even though he was extremely forgetful about paying my invoices!"
-      },
-      {
         "name": "Lady \"Beauty\" Fading",
         "age": "??",
         "duty": "Chairwomen and Chief Shareholder",
@@ -51,6 +43,14 @@
         "description": "Hidden depths",
         "about": "I am Mavis Cheek, aged 32. I have recently been employed as a secretary to the directors at the Pungent Pumpkin Processing Company Despite my meek and mild exterior, I am extremely efficient and intelligent, and like any good secretary, I can manipulate my bosses around my little finger. This is just as well as they are not very well organised! \n I live with my aging mother in a small flat. In my spare time I enjoy crocheting reading Mills and Boon and composing my own romatic fiction. I secretly dream of being whisked away by a tall, handsome, mature man, or becoming an independent business women and leading a glamorous life. Since starting with the company, I have been involved in extensive liaison with Gigi Sparkle, owner of the marketing agency that the company uses. She is they type of high powered, seductive, career girl that I admire.",
         "plea": "Good day. I am Mavis Cheek, secretary to the directors of the Pungent Pumpkin Processing Company. I am very efficient and intelligent, and able to wrap my bosses around my little finger! I am really the power behind the scenes, and most of Clifton’s success was due to me. Precious little thanks I got from him though. I hate ingratitude! Still, now he is dead, I will come into my own. I am sure Professor Bunsen will give me a free hand, and I will effectively be the Managing Director of the company! With remuneration to match!"
+      },
+      {
+        "name": "Gigi Sparkle",
+        "age": "33",
+        "duty": "Marketing Agent",
+        "description": "A bit of a glamour girl",
+        "about": "I am Gigi Sparkle, aged 28. After taking a marketing degree at the London Business School and passing with top honours, I headed to Paris and obtained a buyer's job with the fashion company \"Chantal\". From there I moved to New York and a marketing role with \"Swish\", the cutting edge fashion magazine. I became one of their most valuable employees and they were sorry to see me go when I went to set up the new international sales department at \"Lustful Lingerie\" Ltd. Versatility is my middle name! \n Recently I have taken the plunge and set up my own business. Called \"Sizzling Sex\", I specialise in providing raunchy advertising and marketing campaigns to put some sizzle onto otherwise mundane products. I have been called in to help Pungent Pumpkin Processing Company with launching their two latest products, an athlete's foot treatment and a salami sauce. At great expense I have pulled off a coupe and persuaded the super sexy sports star, Lloyd Lunchbox, to become the face of Pungent Pumpkin Products!",
+        "plea": "Ciao darling! I am Gigi Sparkle, creative force behind the “Super Sparkle” Marketing Agency. I provide all the marketing for the Pungent Pumpkin Processing Company – which includes hiring the celebrated hurdler Lloyd Lunchbox to be the face of Pungent Pumpkin Products! Clifton was incredibly impressed by this. Although some people say I am a ruthless, vengeful businesswoman, I am really sad that Clifton is dead – even though he was extremely forgetful about paying my invoices!"
       },
       {
         "name": "Lloyd Lunchbox",
@@ -76,19 +76,34 @@
       ],
       "interrogation": [
         {
-          "suspect": "Lloyd Lunchbox",
-          "question": "Lloyd, immediately after the toast was made, its said you were acting very strangely. You hiccuped a lot, then sat down very suddenly. Were you feeling unwell?",
-          "answer": "open clue one"
-        },
-        {
-          "suspect": "Gigi Sparkle",
-          "question": "Gigi Sparkle, early tonight did you hand Clifton Curry a small tablet. Clifton put it away in his jacket pocket. Can you tell me what it was?",
-          "answer": "open clue two"
+          "suspect": "Sir Hamish Hogwash",
+          "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
+          "clue": "4"
         },
         {
           "suspect": "Professor Bunsen",
           "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
-          "answer": "open clue three"
+          "clue": "3"
+        },
+        {
+          "suspect": "Lady Fading",
+          "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
+          "clue": "5"
+        },
+        {
+          "suspect": "Mavis Cheek",
+          "question": "Professor Bunsen, can you confirm that the recipes are kept adequately secure? and what about the new products that are in development? There must be samples of these in your laboratory. Are they under lock and key?",
+          "clue": "6"
+        },
+        {
+          "suspect": "Gigi Sparkle",
+          "question": "Gigi Sparkle, early tonight did you hand Clifton Curry a small tablet. Clifton put it away in his jacket pocket. Can you tell me what it was?",
+          "clue": "2"
+        },
+        {
+          "suspect": "Lloyd Lunchbox",
+          "question": "Immediately after the toast was made, its said you were acting very strangely. You hiccuped a lot, then sat down very suddenly. Were you feeling unwell?",
+          "clue": "1"
         }
       ],
       "clues": [
@@ -103,9 +118,25 @@
         {
           "type": "",
           "clue": ""
+        },
+        {
+          "type": "",
+          "clue": ""
+        },
+        {
+          "type": "",
+          "clue": ""
+        },
+        {
+          "type": "",
+          "clue": ""
         }
       ],
       "evidence": [
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         ""
