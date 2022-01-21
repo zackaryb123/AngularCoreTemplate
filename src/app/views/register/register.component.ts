@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {Router} from '@angular/router';
+import {DOCUMENT} from '@angular/common';
+import {AppConstants} from '../../constants';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
-  constructor() { }
+  constructor(private _router: Router,
+              @Inject(DOCUMENT) private document: Document
+  ) { }
 
+  redirectPayaLogin() {
+    this.document.location.href = AppConstants.PAYA_REDIRECT;
+  }
 }
