@@ -5,8 +5,8 @@ import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {AppService} from '../../../../core/service/app/app.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import ResizeObserver from 'resize-observer-polyfill';
-import {FirestoreService} from '../../../../core/store/firestore/firestore.service';
 import {Router} from '@angular/router';
+import {FirestoreService} from '../../../../core/store/firestore/firestore.service';
 
 @Component({
   selector: 'app-case-list',
