@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  payaQboUrl: 'https://payaqbo.com',
+  payaRedirect: 'https://partners.paya.com/login/'
 };

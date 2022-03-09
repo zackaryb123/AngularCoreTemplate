@@ -8,6 +8,9 @@
               <form [formGroup]="boardForm" (ngSubmit)="boardUser(boardForm.value)">
                 <div class="text-center"><img src="assets/img/brand/paya-logo.png" alt="paya logo"></div>
                 <p class="text-muted"></p>
+                <div *ngFor="let alert of alertsDismiss">
+                  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
