@@ -45,6 +45,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PayaQboService} from './service/paya-qbo.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AlertModule} from 'ngx-bootstrap/alert';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
 
 @NgModule({
     imports: [
@@ -64,7 +65,8 @@ import {AlertModule} from 'ngx-bootstrap/alert';
         IconSetModule.forRoot(),
         ReactiveFormsModule,
         HttpClientModule,
-        AlertModule
+        AlertModule,
+        CollapseModule
     ],
   declarations: [
     AppComponent,

@@ -15,3 +15,7 @@ a:visited {
 #result {
   white-space: pre-wrap;
 }
+
+tabset::after {
+    justify-content: space-around !important;
+}
