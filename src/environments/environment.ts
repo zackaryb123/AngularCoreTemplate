@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  payaQboUrl: 'http://localhost:8081',
+  payaQboUrl: 'http://localhost:8080',
   payaRedirect: 'https://partners.paya.com/login/'
 };
