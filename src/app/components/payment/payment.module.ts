@@ -5,6 +5,7 @@ import {CreditCardFormComponent} from './credit-card-form/credit-card-form.compo
 import {PaymentRoutingModule} from './payment-routing.module';
 import {BsDatepickerConfig, BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {DeviceDetectorService} from 'ngx-device-detector';
+import {WebcamModule} from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {DeviceDetectorService} from 'ngx-device-detector';
     CommonModule,
     PaymentRoutingModule,
     FormsModule,
+    WebcamModule,
     BsDatepickerModule.forRoot(),
   ],
   providers: [
