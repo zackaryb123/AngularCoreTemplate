@@ -1,7 +1,7 @@
 <app-header
   [navbarBrandRouterLink]="['/dashboard']"
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/brand/tt-logo.png', width: 89, height: 25, alt: 'CoreUI Logo'}"
+  [navbarBrandFull]="{src: 'assets/img/brand/tackon-logo.png', width: 89, height: 40, alt: 'CoreUI Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
@@ -50,7 +50,7 @@
 </app-header>
 
 <div class="app-body">
-  
+
   <!-- Left Side Bar -->
   <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
@@ -60,7 +60,7 @@
 
   <!-- Main content -->
   <main class="main">
-    
+
     <!-- Breadcrumb -->
     <cui-breadcrumb>
       <li class="breadcrumb-menu d-md-down-none">
@@ -76,7 +76,7 @@
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
-    
+
   </main>
   <!-- /Main content -->
 
