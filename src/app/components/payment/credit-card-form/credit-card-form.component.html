@@ -70,7 +70,7 @@
                     <div class="col-12">
                       <div>
                         <button title="Upload a file" type="button" class="btn btn-primary"><i class="fa fa-upload"></i></button>
-                        <button title="Take a Photo" type="button" class="btn btn-primary" (click)="triggerSnapshot()"><i class="fa fa-camera"></i></button>
+                        <button title="Take a Photo" type="button" class="btn btn-primary"><i class="fa fa-camera"></i></button>
                       </div>
                     </div>
                   </div>
@@ -84,10 +84,6 @@
             </div>
           </div>
         </div>
-        <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-          imageQuality="0.92"
-          (initError)="handleWebCamInitError($event)"
-        ></webcam>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CreditCardFormComponent} from './credit-card-form/credit-card-form.component';
+import {PaymentComponent} from './payment.component';
 
 const routes: Routes = [
   {
@@ -16,9 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'credit-card',
-        component: CreditCardFormComponent,
+        component: PaymentComponent,
         data: {
-          title: 'Credit Card'
+          title: 'Payments'
         }
       }
     ]
