@@ -7,8 +7,6 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import {ButtonsComponent} from './views/buttons/buttons.component';
-// import { LoginComponent } from './views/login/login.component';
-// import { RegisterComponent } from './views/register/register.component';
 
 export const routes: Routes = [
   {
@@ -38,13 +36,6 @@ export const routes: Routes = [
       title: 'Component Test'
     }
   },
-  // {
-  //   path: 'register',
-  //   component: RegisterComponent,
-  //   data: {
-  //     title: 'Register Page'
-  //   }
-  // },
   {
     path: '',
     component: DefaultLayoutComponent,
