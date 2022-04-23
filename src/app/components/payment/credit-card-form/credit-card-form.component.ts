@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {BsDatepickerViewMode} from 'ngx-bootstrap/datepicker';
 import {DatePipe} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DeviceDetectorService} from 'ngx-device-detector';
 
 @Component({
   selector: 'app-credit-card-form',

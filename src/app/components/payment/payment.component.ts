@@ -5,7 +5,6 @@ import {Component, OnInit} from '@angular/core';
   template: `
     <div class="position-relative">
       <app-credit-card-form></app-credit-card-form>
-      <app-webcam class="position-absolute" style="top:0;width:100%"></app-webcam>
     </div>`
 })
 export class PaymentComponent implements OnInit {

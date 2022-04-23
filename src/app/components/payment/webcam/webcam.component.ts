@@ -10,14 +10,15 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 })
 export class WebcamComponent implements OnInit {
   deviceInfo: any;
-  showWebcam: boolean = true;
+  showWebcam: boolean = false;
   imageQuality: number = 0.92;
   imageType: string = 'image/jpeg';
   captureImageData: boolean = true;
   cameraWidth: number = 0;
   cameraHeight: number = 0;
   private trigger: Subject<void> = new Subject<void>();
-  public webcamImage: WebcamImage = null;
+  webcamImage: WebcamImage = null;
+  mobileImage: any;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?: Event) {
@@ -48,9 +49,22 @@ export class WebcamComponent implements OnInit {
     this.cameraHeight = window.innerHeight;
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.showWebcam = mediaDevices && mediaDevices.length > 0;
+        this.deviceInfo.cameraDetected = mediaDevices && mediaDevices.length > 0;
       });
   }
+
+  previewFile(input) {
+    console.log('Input', input);
+    console.log('Mobile Image', this.mobileImage);
+     // const file = $("input[type=file]").get(0).files[0];
+     // if (file) {
+     //   const reader = new FileReader();
+     // reader.onload = function() {
+     //   $("#previewImg").attr("src", reader.result);
+     // }
+     // reader.readAsDataURL(file);
+     // }
+   }
 
   triggerSnapshot(): void {
     this.trigger.next();
@@ -69,5 +83,23 @@ export class WebcamComponent implements OnInit {
     if (error.mediaStreamError && error.mediaStreamError.name === 'NotAllowedError') {
       console.warn('Camera access was not allowed by user!');
     }
+  }
+
+  displayWebcam() {
+    if (this.isDesktopCameraAccess()) {
+      this.showWebcam = true;
+    }
+  }
+
+  isMobileOrTablet() {
+    return this.deviceInfo.isMobile || this.deviceInfo.isTablet;
+  }
+
+  isDesktop() {
+    return this.deviceInfo.isDesktop;
+  }
+
+  isDesktopCameraAccess() {
+    return this.deviceInfo.isDesktop || this.deviceInfo.cameraDetected;
   }
 }

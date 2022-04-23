@@ -1,19 +1,48 @@
-<div class="position-relative" (window:resize)="onResize($event)">
-  <webcam
-    *ngIf="showWebcam"
-    [height]="cameraHeight"
-    [width]="cameraWidth"
-    [trigger]="triggerObservable"
-    (imageCapture)="handleImage($event)"
-    imageQuality="0.92"
-    (initError)="handleWebCamInitError($event)">
-  </webcam>
-  <button title="Take a Photo" type="button" class="btn btn-primary position-absolute" style="bottom:0;right:0"
-          (click)="triggerSnapshot()">
-    <i class="fa fa-camera"></i>
-  </button>
-  <div>
-    <input type="file" accept="image/*" capture="user"/>
-    <input type="file" accept="image/*" capture="environment"/>
+<!-- Mobile Button -->
+<button *ngIf="isMobileOrTablet()" class="btn btn-primary">
+  <label class="m-0" for="mobile-file-input">
+    <i title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
+  </label>
+  <input [(ngModel)]="mobileImage" id="mobile-file-input" type="file" onchange="previewFile(this);" capture="user" style="display: none;"/>
+  <!--<input id="file-input" type="file" onchange="previewFile(this);" capture="environment" style="display: none;"/>-->
+ </button>
+<!-- Mobile Button -->
+
+<!-- Desktop Button -->
+<button *ngIf="isDesktop()" (click)="displayWebcam()" class="btn btn-primary">
+  <label class="m-0" for="desktop-file-input">
+    <i *ngIf="isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
+    <i *ngIf="!isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-upload"></i>
+  </label>
+  <input *ngIf="!isDesktopCameraAccess()" id="desktop-file-input" type="file" onchange="previewFile();" capture="user" style="display: none;"/>
+</button>
+<!-- Desktop Button -->
+
+<!-- Desktop Modal Camera -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
-</div>
+  <div class="modal-body"  (window:resize)="onResize($event)">
+
+    <webcam
+      *ngIf="showWebcam"
+      [height]="cameraHeight"
+      [width]="cameraWidth"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      imageQuality="0.92"
+      (initError)="handleWebCamInitError($event)">
+    </webcam>
+    <button title="Take a Photo" type="button" class="btn btn-primary position-absolute" style="bottom:0;right:0"
+            (click)="triggerSnapshot()">
+      <i class="fa fa-camera"></i>
+    </button>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+<!-- Desktop Modal Camera -->
