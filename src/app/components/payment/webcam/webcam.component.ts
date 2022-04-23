@@ -1,12 +1,14 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import {Observable, Subject} from 'rxjs';
 import {DeviceDetectorService} from 'ngx-device-detector';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-webcam',
   templateUrl: './webcam.component.html',
-  styleUrls: ['./webcam.component.scss']
+  styleUrls: ['./webcam.component.scss'],
+  // encapsulation: ViewEncapsulation.None,
 })
 export class WebcamComponent implements OnInit {
   deviceInfo: any;
@@ -14,21 +16,16 @@ export class WebcamComponent implements OnInit {
   imageQuality: number = 0.92;
   imageType: string = 'image/jpeg';
   captureImageData: boolean = true;
-  cameraWidth: number = 0;
-  cameraHeight: number = 0;
+  cameraWidth: number = 466;
+  cameraHeight: number = 349;
   private trigger: Subject<void> = new Subject<void>();
   webcamImage: WebcamImage = null;
   mobileImage: any;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event?: Event) {
-    const win = !!event ? (event.target as Window) : window;
-    this.cameraWidth = win.innerWidth;
-    this.cameraHeight = win.innerHeight;
-  }
+  modalRef?: BsModalRef;
 
   constructor(
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private modalService: BsModalService
   ) {
     this.deviceDetection();
     this.checkForWebCame();
@@ -45,8 +42,6 @@ export class WebcamComponent implements OnInit {
   }
 
   checkForWebCame() {
-    this.cameraWidth = window.innerWidth;
-    this.cameraHeight = window.innerHeight;
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.deviceInfo.cameraDetected = mediaDevices && mediaDevices.length > 0;
@@ -85,10 +80,8 @@ export class WebcamComponent implements OnInit {
     }
   }
 
-  displayWebcam() {
-    if (this.isDesktopCameraAccess()) {
-      this.showWebcam = true;
-    }
+  displayWebcam(webCamTemplate: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(webCamTemplate, { backdrop: 'static' });
   }
 
   isMobileOrTablet() {

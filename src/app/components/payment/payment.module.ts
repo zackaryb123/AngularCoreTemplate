@@ -8,6 +8,7 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 import {WebcamModule} from 'ngx-webcam';
 import {WebcamComponent} from './webcam/webcam.component';
 import {PaymentComponent} from './payment.component';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {PaymentComponent} from './payment.component';
     PaymentRoutingModule,
     FormsModule,
     WebcamModule,
+    ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
   ],
   providers: [
