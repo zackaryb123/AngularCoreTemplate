@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BsDatepickerViewMode} from 'ngx-bootstrap/datepicker';
 import {DatePipe} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PaymentService} from '../service/payment.service';
 
 @Component({
   selector: 'app-credit-card-form',
@@ -17,6 +18,7 @@ export class CreditCardFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
+    private paymentService: PaymentService
   ) {
     this.buildCreditCardForm();
   }
@@ -38,5 +40,14 @@ export class CreditCardFormComponent implements OnInit {
     const expDate = this.datePipe.transform(this.datePicker.getTime(), 'MM-yyyy');
     this.creditCardForm.controls['expDate'].setValue(expDate);
     console.log(this.creditCardForm.controls);
+  }
+
+  sendFile(file) {
+    console.log('Send File :', file);
+    this.paymentService.postCardFile(file).toPromise().then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
   }
 }

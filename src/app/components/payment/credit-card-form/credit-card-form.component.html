@@ -70,7 +70,9 @@
                   <div class="row">
                     <div class="col-12">
                       <div>
-                        <app-webcam></app-webcam>
+                        <app-webcam
+                          (fileOutput)="sendFile($event)">
+                        </app-webcam>
                       </div>
                     </div>
                   </div>

@@ -9,6 +9,7 @@ import {WebcamModule} from 'ngx-webcam';
 import {WebcamComponent} from './webcam/webcam.component';
 import {PaymentComponent} from './payment.component';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     WebcamModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     BsDatepickerConfig,

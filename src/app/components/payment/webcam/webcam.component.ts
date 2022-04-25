@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import {Observable, Subject} from 'rxjs';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -15,13 +15,18 @@ export class WebcamComponent implements OnInit {
   showWebcam: boolean = false;
   imageQuality: number = 0.92;
   imageType: string = 'image/jpeg';
+  cameraDetected: boolean = false;
+  isDesktop: boolean = false;
+  isTablet: boolean = false;
+  isMobile: boolean = false;
   captureImageData: boolean = true;
   cameraWidth: number = 466;
   cameraHeight: number = 349;
   private trigger: Subject<void> = new Subject<void>();
-  webcamImage: WebcamImage = null;
-  mobileImage: any;
   modalRef?: BsModalRef;
+  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
+
+  @Output() fileOutput = new EventEmitter<File>();
 
   constructor(
     private deviceService: DeviceDetectorService,
@@ -35,39 +40,53 @@ export class WebcamComponent implements OnInit {
 
   deviceDetection() {
     this.deviceInfo = this.deviceService.getDeviceInfo();
-    this.deviceInfo.isMobile = this.deviceService.isMobile();
-    this.deviceInfo.isTablet = this.deviceService.isTablet();
-    this.deviceInfo.isDesktop = this.deviceService.isDesktop();
+    this.isMobile = this.deviceService.isMobile();
+    this.isTablet = this.deviceService.isTablet();
+    this.isDesktop = this.deviceService.isDesktop();
     console.log(this.deviceInfo);
   }
 
   checkForWebCame() {
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.deviceInfo.cameraDetected = mediaDevices && mediaDevices.length > 0;
+        this.cameraDetected = mediaDevices && mediaDevices.length > 0;
       });
   }
 
-  previewFile(input) {
-    console.log('Input', input);
-    console.log('Mobile Image', this.mobileImage);
-     // const file = $("input[type=file]").get(0).files[0];
-     // if (file) {
-     //   const reader = new FileReader();
-     // reader.onload = function() {
-     //   $("#previewImg").attr("src", reader.result);
-     // }
-     // reader.readAsDataURL(file);
-     // }
-   }
+  handleMobileImage(event) {
+    if (event.target.files.length > 0) {
+      console.log('received Mobile image', event);
+      const file = event.target.files[0];
+      this.fileOutput.emit(file);
+    }
+  }
+
+  handleDesktopImage(event): void {
+    if (event.imageAsBase64) {
+      console.log('received Desktop image', event);
+      const file = this.convertWebCamImage(event);
+      this.fileOutput.emit(file);
+    } else if (event.target.files.length > 0) {
+      console.log('received Desktop image', event);
+      const file = event.target.files[0];
+      this.fileOutput.emit(file);
+    }
+  }
+
+  convertWebCamImage(webcamImage: WebcamImage) {
+    const arr = webcamImage.imageAsDataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], 'upload', { type: mime });
+  }
 
   triggerSnapshot(): void {
     this.trigger.next();
-  }
-
-  handleImage(webcamImage: WebcamImage): void {
-    console.log('received webcam image', webcamImage);
-    this.webcamImage = webcamImage;
   }
 
   get triggerObservable(): Observable<void> {
@@ -81,18 +100,16 @@ export class WebcamComponent implements OnInit {
   }
 
   displayWebcam(webCamTemplate: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(webCamTemplate, { backdrop: 'static' });
+    if (this.isDesktopCameraAccess()) {
+      this.modalRef = this.modalService.show(webCamTemplate, { backdrop: 'static' });
+    }
   }
 
   isMobileOrTablet() {
-    return this.deviceInfo.isMobile || this.deviceInfo.isTablet;
-  }
-
-  isDesktop() {
-    return this.deviceInfo.isDesktop;
+    return this.isMobile || this.isTablet;
   }
 
   isDesktopCameraAccess() {
-    return this.deviceInfo.isDesktop || this.deviceInfo.cameraDetected;
+    return this.isDesktop && this.cameraDetected;
   }
 }

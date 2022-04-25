@@ -3,18 +3,22 @@
   <label class="m-0" for="mobile-file-input">
     <i title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
   </label>
-  <input [(ngModel)]="mobileImage" id="mobile-file-input" type="file" onchange="previewFile(this);" capture="user" style="display: none;"/>
+  <input id="mobile-file-input" type="file" capture="environment" style="display: none;"
+         (change)="handleMobileImage($event)"/>
   <!--<input id="file-input" type="file" onchange="previewFile(this);" capture="environment" style="display: none;"/>-->
  </button>
 <!-- Mobile Button -->
 
 <!-- Desktop Button -->
-<button *ngIf="isDesktop()" (click)="displayWebcam(webCamTemplate)" class="btn btn-primary">
+<button *ngIf="isDesktop" (click)="displayWebcam(webCamTemplate)" class="btn btn-primary position-relative">
   <label class="m-0" for="desktop-file-input">
     <i *ngIf="isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
     <i *ngIf="!isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-upload"></i>
   </label>
-  <input *ngIf="!isDesktopCameraAccess()" id="desktop-file-input" type="file" onchange="previewFile();" capture="user" style="display: none;"/>
+  <input #myDiv *ngIf="!isDesktopCameraAccess()" id="desktop-file-input" type="file" capture="environment"
+         class="position-absolute"
+         style="z-index:-1;width:100%;height:100%;top:0;right:0;"
+         (change)="handleDesktopImage($event)"/>
 </button>
 <!-- Desktop Button -->
 
@@ -32,7 +36,7 @@
         [height]="cameraHeight"
         [width]="cameraWidth"
         [trigger]="triggerObservable"
-        (imageCapture)="handleImage($event)"
+        (imageCapture)="handleDesktopImage($event)"
         imageQuality="0.92"
         (initError)="handleWebCamInitError($event)">
       </webcam>
