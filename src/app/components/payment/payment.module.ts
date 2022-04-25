@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
-import {FormBuilder, FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreditCardFormComponent} from './credit-card-form/credit-card-form.component';
 import {PaymentRoutingModule} from './payment-routing.module';
 import {BsDatepickerConfig, BsDatepickerModule} from 'ngx-bootstrap/datepicker';
@@ -24,7 +24,9 @@ import {HttpClientModule} from '@angular/common/http';
     WebcamModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     BsDatepickerConfig,

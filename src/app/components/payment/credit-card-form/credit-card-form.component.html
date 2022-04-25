@@ -22,47 +22,57 @@
               </div>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body payment-card-body">
-
-                  <span class="font-weight-normal card-text">Card Number</span>
-                  <div>
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
-                      <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-credit-card"></i></span></div>
-                    </div>
-                  </div>
-                  <div class="row mt-3 mb-3">
-                    <div class="col-md-4">
-                      <span class="font-weight-normal card-text">Expiry Date</span>
+                  <form [formGroup]="creditCardForm">
+                    <span class="font-weight-normal card-text">Card Number</span>
+                    <div>
                       <div class="input-group mb-3">
-                        <input type="text"
-                               placeholder="MM-YYYY"
-                               class="form-control"
-                               [(ngModel)]="datePicker"
-                               bsDatepicker
-                               [bsConfig]="{ isAnimated: true, dateInputFormat: 'MM-YYYY', minMode: minMode }"
-                               (ngModelChange)="setDate()">
-                        <div class="input-group-append"><span title="Expiry Date" class="input-group-text"><i class="fa fa-2x fa-calendar"></i></span></div>
+                        <input type="text" class="form-control" formControlName="cardNumber" placeholder="0000 0000 0000 0000"/>
+                        <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-credit-card"></i></span></div>
                       </div>
                     </div>
-                    <div class="col-md-4">
-                      <span class="font-weight-normal card-text">CVC/CVV</span>
-                      <div>
+                    <div class="row mt-3 mb-3">
+                      <div class="col-md-4">
+                        <span class="font-weight-normal card-text">Expiry Date</span>
                         <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="000">
-                          <div class="input-group-append"><span title="CVC/CVV" class="input-group-text"><i class="fa fa-2x fa-lock"></i></span></div>
+                          <input type="text"
+                                 class="form-control"
+                                 [ngModelOptions]="{standalone: true}"
+                                 placeholder="MM-YYYY"
+                                 [(ngModel)]="datePicker"
+                                 bsDatepicker
+                                 [bsConfig]="{ isAnimated: true, dateInputFormat: 'MM-YYYY', minMode: minMode }"/>
+                          <div class="input-group-append"><span title="Expiry Date" class="input-group-text"><i class="fa fa-2x fa-calendar"></i></span></div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <span class="font-weight-normal card-text">Zip Code</span>
-                      <div>
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="00000">
-                          <div class="input-group-append"><span title="Zipe Code" class="input-group-text"><i class="fa fa-2x fa-globe"></i></span></div>
+                      <div class="col-md-4">
+                        <span class="font-weight-normal card-text">CVC/CVV</span>
+                        <div>
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" formControlName="cvv" placeholder="000"/>
+                            <div class="input-group-append"><span title="CVC/CVV" class="input-group-text"><i class="fa fa-2x fa-lock"></i></span></div>
+                          </div>
                         </div>
                       </div>
+                      <div class="col-md-4">
+                        <span class="font-weight-normal card-text">Zip Code</span>
+                        <div>
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" formControlName="zipCode" placeholder="00000"/>
+                            <div class="input-group-append"><span title="Zipe Code" class="input-group-text"><i class="fa fa-2x fa-globe"></i></span></div>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
-                  </div>
+
+                    <span class="font-weight-normal card-text">Name on Card</span>
+                    <div>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" formControlName="cardHolderName" placeholder="Name on Card"/>
+                        <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-credit-card"></i></span></div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
               <div class="card-footer">

@@ -12,7 +12,7 @@ import {PaymentService} from '../service/payment.service';
 export class CreditCardFormComponent implements OnInit {
   // Payment Form variables
   minMode: BsDatepickerViewMode = 'month';
-  datePicker: Date;
+  datePicker: Date = new Date();
   creditCardForm: FormGroup;
 
   constructor(
@@ -28,23 +28,45 @@ export class CreditCardFormComponent implements OnInit {
 
   buildCreditCardForm() {
     this.creditCardForm = this.formBuilder.group({
-      cardNumber: ['', [Validators.required, Validators.minLength(10)], Validators.pattern('')],
-      cardHolderName: ['', [Validators.required, Validators.minLength(10)]],
-      expDate: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
-      cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
-      zipCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
+      cardNumber: ['', [
+        Validators.required,
+        Validators.minLength(10)],
+        // Validators.pattern('')
+      ],
+      cardHolderName: ['', [
+        Validators.required,
+        // Validators.minLength(10)
+      ]],
+      cvv: ['', [
+        Validators.required,
+        // Validators.minLength(3),
+        // Validators.maxLength(4)
+      ]],
+      zipCode: ['', [
+        Validators.required,
+        // Validators.minLength(3),
+        // Validators.maxLength(10)
+      ]]
     });
-  }
-
-  setDate() {
-    const expDate = this.datePipe.transform(this.datePicker.getTime(), 'MM-yyyy');
-    this.creditCardForm.controls['expDate'].setValue(expDate);
-    console.log(this.creditCardForm.controls);
   }
 
   sendFile(file) {
     console.log('Send File :', file);
-    this.paymentService.postCardFile(file).toPromise().then(res => {
+    this.paymentService.postCardFile(file).toPromise().then((res: any) => {
+      this.creditCardForm.controls['cardNumber'].setValue(res.account);
+      const expDate = res.experatopnDate.split('/');
+      if (expDate.length === 2) {
+        const month = expDate[0];
+        let year = expDate[1];
+        const currentDate = new Date();
+        if (year.length === 2) {
+          year = currentDate.getUTCFullYear().toString().substr(0, 2) +  expDate[1];
+        }
+        console.log(month + '/' + year);
+        this.datePicker = new Date(Number(year), Number(month));
+      }
+      this.creditCardForm.controls['cardHolderName'].setValue(res.name.firstName + ' ' + res.name.middleInitial + ' ' + res.name.lastName);
+      this.creditCardForm.controls['cvv'].setValue(res.cvv);
       console.log(res);
     }).catch(err => {
       console.log(err);
