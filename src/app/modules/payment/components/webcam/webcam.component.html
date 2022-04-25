@@ -19,12 +19,17 @@
 <!-- Mobile Button -->
 
 <!-- Desktop Button -->
-<button *ngIf="isDesktop" (click)="displayWebcam(webCamTemplate)" class="btn btn-primary position-relative">
-  <label class="m-0" for="desktop-file-input">
-    <i *ngIf="isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
-    <i *ngIf="!isDesktopCameraAccess()" title="Credit or Debit Card" class="fa fa-2x fa-upload"></i>
+<button *ngIf="isDesktop && isDesktopCameraAccess()" (click)="displayWebcam(webCamTemplate)" class="btn btn-primary position-relative">
+  <label class="m-0">
+    <i title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
   </label>
-  <input #myDiv *ngIf="!isDesktopCameraAccess()" id="desktop-file-input" type="file" capture="environment"
+</button>
+
+<button *ngIf="isDesktop" class="btn btn-primary position-relative">
+  <label class="m-0" for="desktop-file-upload">
+    <i title="Credit or Debit Card" class="fa fa-2x fa-upload"></i>
+  </label>
+  <input id="desktop-file-upload" type="file"
          class="position-absolute"
          style="z-index:-1;width:100%;height:100%;top:0;right:0;"
          (change)="handleDesktopImage($event)"/>

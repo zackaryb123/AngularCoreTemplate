@@ -24,7 +24,6 @@ export class WebcamComponent implements OnInit {
   cameraHeight: number = 349;
   private trigger: Subject<void> = new Subject<void>();
   modalRef?: BsModalRef;
-  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
 
   @Output() fileOutput = new EventEmitter<File>();
 
