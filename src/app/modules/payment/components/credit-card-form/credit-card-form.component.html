@@ -13,9 +13,9 @@
                       <i title="Credit or Debit Card" class="fa fa-2x fa-credit-card mr-2"></i>
                     </div>
                     <div class="icons">
-                      <img alt="master card" src="/assets/img/card-icons/master-card-icon.png" width="40">
-                      <img alt="visa card" src="/assets/img/card-icons/visa-card-icon.png" width="40">
-                      <img alt="stripe card" src="/assets/img/card-icons/stripe-card-icon.png" width="40">
+                      <img alt="master card" src="/src/assets/img/card-icons/master-card-icon.png" width="40">
+                      <img alt="visa card" src="/src/assets/img/card-icons/visa-card-icon.png" width="40">
+                      <img alt="stripe card" src="/src/assets/img/card-icons/stripe-card-icon.png" width="40">
                     </div>
                   </div>
                 </button> </h2>
@@ -69,7 +69,7 @@
                     <div>
                       <div class="input-group mb-3">
                         <input type="text" class="form-control" formControlName="cardHolderName" placeholder="Name on Card"/>
-                        <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-credit-card"></i></span></div>
+                        <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-user"></i></span></div>
                       </div>
                     </div>
                   </form>
@@ -100,3 +100,4 @@
     </div>
   </div>
 </div>
+<app-loading [showSpinner]="isLoading"></app-loading>

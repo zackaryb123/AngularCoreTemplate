@@ -1,21 +1,24 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CreditCardFormComponent} from './credit-card-form/credit-card-form.component';
+import {CreditCardFormComponent} from './components/credit-card-form/credit-card-form.component';
 import {PaymentRoutingModule} from './payment-routing.module';
 import {BsDatepickerConfig, BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {WebcamModule} from 'ngx-webcam';
-import {WebcamComponent} from './webcam/webcam.component';
+import {WebcamComponent} from './components/webcam/webcam.component';
 import {PaymentComponent} from './payment.component';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {HttpClientModule} from '@angular/common/http';
+import { LoadingComponent } from './components/loading/loading.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
     PaymentComponent,
     CreditCardFormComponent,
-    WebcamComponent
+    WebcamComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -26,13 +29,15 @@ import {HttpClientModule} from '@angular/common/http';
     BsDatepickerModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     BsDatepickerConfig,
     FormBuilder,
     DatePipe,
     DeviceDetectorService
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PaymentModule { }

@@ -45,7 +45,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'payment',
-        loadChildren: () => import('./components/payment/payment.module').then(m => m.PaymentModule)
+        loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule)
       }
     ]
   },

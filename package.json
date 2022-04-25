@@ -44,6 +44,8 @@
     "font-awesome": "^4.7.0",
     "ng2-charts": "^2.4.2",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-image-compress": "^11.0.3",
+    "ngx-spinner": "^11.0.2",
     "ngx-device-detector": "^2.0.5",
     "ngx-perfect-scrollbar": "^10.1.0",
     "ngx-webcam": "^0.3.2",
