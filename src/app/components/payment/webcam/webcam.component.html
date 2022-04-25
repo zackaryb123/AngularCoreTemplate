@@ -1,12 +1,21 @@
 <!-- Mobile Button -->
 <button *ngIf="isMobileOrTablet()" class="btn btn-primary">
-  <label class="m-0" for="mobile-file-input">
+  <label class="m-0" for="mobile-file-camera">
     <i title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
   </label>
-  <input id="mobile-file-input" type="file" capture="environment" style="display: none;"
+  <input id="mobile-file-camera" type="file" capture="environment" style="display: none;"
          (change)="handleMobileImage($event)"/>
   <!--<input id="file-input" type="file" onchange="previewFile(this);" capture="environment" style="display: none;"/>-->
  </button>
+
+<button *ngIf="isMobileOrTablet()" class="btn btn-primary">
+  <label class="m-0" for="mobile-file-upload">
+    <i title="Credit or Debit Card" class="fa fa-2x fa-upload"></i>
+  </label>
+  <input id="mobile-file-upload" type="file" style="display: none;"
+         (change)="handleMobileImage($event)"/>
+  <!--<input id="file-input" type="file" onchange="previewFile(this);" capture="environment" style="display: none;"/>-->
+</button>
 <!-- Mobile Button -->
 
 <!-- Desktop Button -->
