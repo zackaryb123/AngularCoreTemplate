@@ -1,5 +1,5 @@
 <!-- Mobile Button -->
-<button *ngIf="isMobileOrTablet()" class="btn btn-primary">
+<button *ngIf="isMobileOrTablet() && cameraDetected" class="btn btn-primary">
   <label class="m-0" for="mobile-file-camera">
     <i title="Credit or Debit Card" class="fa fa-2x fa-camera"></i>
   </label>
