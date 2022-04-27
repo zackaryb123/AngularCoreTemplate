@@ -12,6 +12,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {HttpClientModule} from '@angular/common/http';
 import { LoadingComponent } from './components/loading/loading.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {NgxImageCompressService} from 'ngx-image-compress';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BsDropdownModule
   ],
   providers: [
     BsDatepickerConfig,
     FormBuilder,
     DatePipe,
-    DeviceDetectorService
+    DeviceDetectorService,
+    NgxImageCompressService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

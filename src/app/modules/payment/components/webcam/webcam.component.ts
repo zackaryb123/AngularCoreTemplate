@@ -1,8 +1,11 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef} from '@angular/core';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import {Observable, Subject} from 'rxjs';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {NgxImageCompressService} from 'ngx-image-compress';
+import {CONSTANT} from '../../constant';
+import {webCamURItoFile} from '../../utils';
 
 @Component({
   selector: 'app-webcam',
@@ -11,17 +14,15 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
   // encapsulation: ViewEncapsulation.None,
 })
 export class WebcamComponent implements OnInit {
+  cameraWidth: number = 466;
+  cameraHeight: number = 349;
   deviceInfo: any;
-  showWebcam: boolean = false;
   imageQuality: number = 0.92;
   imageType: string = 'image/jpeg';
   cameraDetected: boolean = false;
   isDesktop: boolean = false;
   isTablet: boolean = false;
   isMobile: boolean = false;
-  captureImageData: boolean = true;
-  cameraWidth: number = 466;
-  cameraHeight: number = 349;
   private trigger: Subject<void> = new Subject<void>();
   modalRef?: BsModalRef;
 
@@ -29,7 +30,8 @@ export class WebcamComponent implements OnInit {
 
   constructor(
     private deviceService: DeviceDetectorService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private imageCompress: NgxImageCompressService
   ) {
     this.deviceDetection();
     this.checkForWebCame();
@@ -54,34 +56,65 @@ export class WebcamComponent implements OnInit {
 
   handleMobileImage(event) {
     if (event.target.files.length > 0) {
-      console.log('received Mobile image', event);
+      console.log('received Mobile image as file', event);
       const file = event.target.files[0];
-      this.fileOutput.emit(file);
+      if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
+        this.readFileAsDataUriAndCompress(file);
+      } else {
+        this.fileOutput.emit(file);
+      }
     }
   }
 
   handleDesktopImage(event): void {
-    if (event.imageAsBase64) {
-      console.log('received Desktop image', event);
-      const file = this.convertWebCamImage(event);
-      this.fileOutput.emit(file);
+    if (event.imageAsBase64) { // Check for webcam capture before we check upload from file system
+      const webcamImage: WebcamImage = event;
+      console.log('received Desktop image as uri', event);
+      const file = webCamURItoFile(webcamImage);
+      if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
+        this.compressFile(webcamImage.imageAsBase64, 'webcam card capture');
+      } else {
+        this.fileOutput.emit(file);
+      }
     } else if (event.target.files.length > 0) {
-      console.log('received Desktop image', event);
+      console.log('received Desktop image as file', event);
       const file = event.target.files[0];
-      this.fileOutput.emit(file);
+      if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
+        this.readFileAsDataUriAndCompress(file);
+      } else {
+        this.fileOutput.emit(file);
+      }
     }
   }
 
-  convertWebCamImage(webcamImage: WebcamImage) {
-    const arr = webcamImage.imageAsDataUrl.split(',');
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], 'upload', { type: mime });
+  readFileAsDataUriAndCompress(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const localUrl = e.target.result;
+      this.compressFile(localUrl, file.name);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  compressFile(image, fileName) {
+    console.log('Size in bytes is now:', this.imageCompress.byteCount(image));
+    const imageName = fileName;
+    this.imageCompress.compressFile(
+      image,
+      CONSTANT.PAYMENT_CARD_IMAGE.ORIENTATION,
+      CONSTANT.PAYMENT_CARD_IMAGE.COMPRESS_QUALITY,
+      CONSTANT.PAYMENT_CARD_IMAGE.COMPRESS_RATIO
+    ).then(result => {
+      const compressedImageUri = result;
+      console.log('Size in bytes after compression:', this.imageCompress.byteCount(compressedImageUri));
+      const imageFile = new File([compressedImageUri], imageName, {type: CONSTANT.PAYMENT_CARD_IMAGE.TYPE});
+      console.log('Compressed file : ' + imageFile);
+      if (imageFile.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
+        this.compressFile(imageFile, imageFile.name);
+      } else {
+        this.fileOutput.emit(imageFile);
+      }
+    });
   }
 
   triggerSnapshot(): void {
@@ -100,7 +133,7 @@ export class WebcamComponent implements OnInit {
 
   displayWebcam(webCamTemplate: TemplateRef<any>) {
     if (this.isDesktopCameraAccess()) {
-      this.modalRef = this.modalService.show(webCamTemplate, { backdrop: 'static' });
+      this.modalRef = this.modalService.show(webCamTemplate, {backdrop: 'static'});
     }
   }
 

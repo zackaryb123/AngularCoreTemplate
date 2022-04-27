@@ -2,7 +2,24 @@
   <div class="row g-3">
     <div class="col-12">
       <div class="mt-2 mr-auto ml-auto" style="max-width: 50rem">
-        <div class="h2 mb-2">Payment</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="h2 mb-2">Payment</div>
+          <div class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" style="padding: 0; border: none;" aria-controls="dropdown-basic">
+              <i title="other payment options" class="fa fa-2x fa-gear input-group-text"></i>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" href="#">Arch</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Apple Pay</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">World Pay</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Paypal</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="card mb-0">
             <div class="accordion" id="accordionExample">
             <div class="card mb-0">
@@ -12,13 +29,18 @@
                     <div class="d-flex align-items-center justify-content-between">
                       <i title="Credit or Debit Card" class="fa fa-2x fa-credit-card mr-2"></i>
                     </div>
-                    <div class="icons">
-<!--                      <img alt="master card" src="/assets/img/card-icons/card-group.png" width="170">-->
-                      <img alt="master card" src="/assets/img/card-icons/master-card-icon.png" width="48">
-                      <img alt="visa card" src="/assets/img/card-icons/visa1.png" width="48">
-                      <img alt="stripe card" src="/assets/img/card-icons/discover-card.png" width="48">
-                      <img alt="stripe card" src="/assets/img/card-icons/american-express.png" width="44">
+                    <div>
+                      <app-webcam
+                        (fileOutput)="sendFile($event)">
+                      </app-webcam>
                     </div>
+<!--                    <div class="icons">-->
+<!--                      <img alt="master card" src="/assets/img/card-icons/card-group.png" width="170">-->
+<!--                      <img alt="master card" src="/assets/img/card-icons/master-card-icon.png" width="48">-->
+<!--                      <img alt="visa card" src="/assets/img/card-icons/visa1.png" width="48">-->
+<!--                      <img alt="stripe card" src="/assets/img/card-icons/discover-card.png" width="48">-->
+<!--                      <img alt="stripe card" src="/assets/img/card-icons/american-express.png" width="44">-->
+<!--                    </div>-->
                   </div>
                 </button> </h2>
               </div>
@@ -81,10 +103,14 @@
                 <div class="d-flex justify-content-end">
                   <div class="row">
                     <div class="col-12">
-                      <div>
-                        <app-webcam
-                          (fileOutput)="sendFile($event)">
-                        </app-webcam>
+                      <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;min-width: 12rem;">
+                        <button class="btn btn-primary">
+                          <h4>Pay</h4>
+                        </button>
+                        <div class="p-2 d-flex pt-3">
+                          <div class="col-8"><b>Total:</b></div>
+                          <div class="ms-auto"><b class="text-success">$85.00</b></div>
+                        </div>
                       </div>
                     </div>
                   </div>

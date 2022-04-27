@@ -51,7 +51,7 @@
         [width]="cameraWidth"
         [trigger]="triggerObservable"
         (imageCapture)="handleDesktopImage($event)"
-        imageQuality="0.92"
+        [imageQuality]="imageQuality"
         (initError)="handleWebCamInitError($event)">
       </webcam>
     </div>

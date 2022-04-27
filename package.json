@@ -2,9 +2,13 @@
   "name": "tackon_technologies_payment_form",
   "version": "2.11.2",
   "description": "Tackon Technologies Payment Processing Form",
-  "author": {"name": "Zack Blaylock"},
+  "author": {
+    "name": "Zack Blaylock"
+  },
   "contributors": [
-    {"name": "Zack Blaylock"}
+    {
+      "name": "Zack Blaylock"
+    }
   ],
   "homepage": "",
   "copyright": "",
@@ -44,10 +48,10 @@
     "font-awesome": "^4.7.0",
     "ng2-charts": "^2.4.2",
     "ngx-bootstrap": "^6.2.0",
-    "ngx-image-compress": "^11.0.3",
-    "ngx-spinner": "^11.0.2",
     "ngx-device-detector": "^2.0.5",
+    "ngx-image-compress": "^11.0.3",
     "ngx-perfect-scrollbar": "^10.1.0",
+    "ngx-spinner": "^11.0.2",
     "ngx-webcam": "^0.3.2",
     "rxjs": "^6.6.6",
     "simple-line-icons": "^2.5.5",
