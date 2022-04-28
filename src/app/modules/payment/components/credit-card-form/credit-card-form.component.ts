@@ -3,6 +3,7 @@ import {BsDatepickerViewMode} from 'ngx-bootstrap/datepicker';
 import {DatePipe} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PaymentService} from '../../service/payment.service';
+import {CreditCardValidators} from 'angular-cc-library';
 
 @Component({
   selector: 'app-credit-card-form',
@@ -31,22 +32,25 @@ export class CreditCardFormComponent implements OnInit {
     this.creditCardForm = this.formBuilder.group({
       cardNumber: ['', [
         Validators.required,
+        CreditCardValidators.validateCCNumber,
         Validators.minLength(10)],
-        // Validators.pattern('')
       ],
+      expDate: ['', [
+        Validators.required,
+        CreditCardValidators.validateExpDate
+      ]],
       cardHolderName: ['', [
         Validators.required,
-        // Validators.minLength(10)
       ]],
       cvv: ['', [
         Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(4)
+        Validators.minLength(3),
+        Validators.maxLength(4)
       ]],
       zipCode: ['', [
         Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(10)
+        Validators.minLength(3),
+        Validators.maxLength(10)
       ]]
     });
   }

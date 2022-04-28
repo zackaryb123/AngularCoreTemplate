@@ -14,6 +14,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {CreditCardDirectivesModule} from 'angular-cc-library';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    BsDropdownModule
+    BsDropdownModule,
+    CreditCardDirectivesModule
   ],
   providers: [
     BsDatepickerConfig,

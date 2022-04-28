@@ -37,10 +37,10 @@
                     </div>
 <!--                    <div class="icons">-->
 <!--                      <img alt="master card" src="/assets/img/card-icons/card-group.png" width="170">-->
-<!--                      <img alt="master card" src="/assets/img/card-icons/master-card-icon.png" width="48">-->
-<!--                      <img alt="visa card" src="/assets/img/card-icons/visa1.png" width="48">-->
-<!--                      <img alt="stripe card" src="/assets/img/card-icons/discover-card.png" width="48">-->
-<!--                      <img alt="stripe card" src="/assets/img/card-icons/american-express.png" width="44">-->
+<!--                      <img alt="master card" src="/assets/img/card-icons/mastercard.png" width="48">-->
+<!--                      <img alt="visa card" src="/assets/img/card-icons/visa.png" width="48">-->
+<!--                      <img alt="stripe card" src="/assets/img/card-icons/discover1.png" width="48">-->
+<!--                      <img alt="stripe card" src="/assets/img/card-icons/amex.png" width="44">-->
 <!--                    </div>-->
                   </div>
                 </button> </h2>
@@ -50,22 +50,52 @@
                   <form [formGroup]="creditCardForm">
                     <span class="font-weight-normal card-text">Card Number</span>
                     <div>
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" formControlName="cardNumber" placeholder="0000 0000 0000 0000"/>
-                        <div class="input-group-append"><span title="Card Number" class="input-group-text"><i class="fa fa-2x fa-credit-card"></i></span></div>
+                      <div class="input-group mb-3 align-items-center">
+                        <input id="cc-number" ccNumber autocomplete="cc-number" #ccNumber="ccNumber"
+                               style="border-top-right-radius: 0.25rem;border-bottom-right-radius: 0.25rem"
+                               type="tel" class="form-control" formControlName="cardNumber" placeholder="0000 0000 0000 0000"/>
+<!--                        <span *ngIf="(ccNumber.resolvedScheme$ | async)!='unknown'"-->
+<!--                              style="right:0;margin-right:5rem;z-index:10;width:2rem"-->
+<!--                              class="scheme position-absolute">-->
+<!--                          <img style="width: 2rem" alt="{{ccNumber.resolvedScheme$ | async}} card" src="/assets/img/card-icons/{{ccNumber.resolvedScheme$ | async}}.png">-->
+<!--                        </span>-->
+<!--                        <span *ngIf="(ccNumber.resolvedScheme$ | async)=='unknown'"-->
+<!--                              style="right: 0;margin-right:5rem;z-index:10" class="scheme position-absolute">-->
+<!--                          <i class="fa fa-2x fa-credit-card"></i>-->
+<!--                        </span>-->
+
+                        <div class="input-group-append">
+                          <span title="Card Number" class="input-group-text p-0">
+                            <span *ngIf="(ccNumber.resolvedScheme$ | async)!='unknown'"
+                                  style="right:0;margin-right:0.5rem;z-index:10;"
+                                  class="scheme position-absolute">
+                              <img style="width: 3rem" alt="{{ccNumber.resolvedScheme$ | async}} card" src="/assets/img/card-icons/{{ccNumber.resolvedScheme$ | async}}.png">
+                            </span>
+                            <span *ngIf="(ccNumber.resolvedScheme$ | async)=='unknown'"
+                                  style="right: 0;margin-right:1rem;z-index:10" class="scheme position-absolute">
+                              <i class="fa fa-2x fa-credit-card"></i>
+                            </span>
+<!--                            <i class="fa fa-2x fa-credit-card"></i>-->
+<!--                          <app-webcam-->
+<!--                            (loading)="isCompressingFile($event)"-->
+<!--                            (fileOutput)="sendFile($event)">-->
+<!--                          </app-webcam>-->
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div class="row mt-3">
                       <div class="col-md-4">
                         <span class="font-weight-normal card-text">Expiry Date</span>
                         <div class="input-group mb-3">
-                          <input type="text"
-                                 class="form-control"
-                                 [ngModelOptions]="{standalone: true}"
-                                 placeholder="MM-YYYY"
-                                 [(ngModel)]="datePicker"
-                                 bsDatepicker
-                                 [bsConfig]="{ isAnimated: true, dateInputFormat: 'MM-YYYY', minMode: minMode }"/>
+<!--                          <input type="text"-->
+<!--                                 class="form-control"-->
+<!--                                 [ngModelOptions]="{standalone: true}"-->
+<!--                                 placeholder="MM-YYYY"-->
+<!--                                 [(ngModel)]="datePicker"-->
+<!--                                 bsDatepicker-->
+<!--                                 [bsConfig]="{ isAnimated: true, dateInputFormat: 'MM-YYYY', minMode: minMode }"/>-->
+                          <input ccExp id="cc-exp-date" type="tel" autocomplete="cc-exp" class="form-control" formControlName="expDate" placeholder="MM/YY"/>
                           <div class="input-group-append"><span title="Expiry Date" class="input-group-text"><i class="fa fa-2x fa-calendar"></i></span></div>
                         </div>
                       </div>
@@ -73,7 +103,7 @@
                         <span class="font-weight-normal card-text">CVC/CVV</span>
                         <div>
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" formControlName="cvv" placeholder="000"/>
+                            <input ccCVC id="cc-cvc" type="tel" autocomplete="off" class="form-control" formControlName="cvv" placeholder="000"/>
                             <div class="input-group-append"><span title="CVC/CVV" class="input-group-text"><i class="fa fa-2x fa-lock"></i></span></div>
                           </div>
                         </div>
@@ -105,13 +135,13 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;min-width: 12rem;">
-                        <button class="btn btn-primary">
-                          <h4>Pay</h4>
-                        </button>
-                        <div class="p-2 d-flex pt-3">
+                        <div class="p-2 d-flex">
                           <div class="col-8"><b>Total:</b></div>
                           <div class="ms-auto"><b class="text-success">$85.00</b></div>
                         </div>
+                        <button class="btn btn-primary">
+                          <h4>Pay</h4>
+                        </button>
                       </div>
                     </div>
                   </div>
