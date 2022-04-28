@@ -6,7 +6,7 @@ export const CONSTANT = {
     MAX_FILE_SIZE: 1048576,
     COMPRESS_QUALITY: 80,
     COMPRESS_RATIO: 80,
-    ORIENTATION: -1,
+    ORIENTATION: 0,
     TYPE: 'image/jpeg'
   }
 };

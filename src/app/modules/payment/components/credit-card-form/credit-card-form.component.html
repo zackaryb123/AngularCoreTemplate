@@ -31,6 +31,7 @@
                     </div>
                     <div>
                       <app-webcam
+                        (loading)="isCompressingFile($event)"
                         (fileOutput)="sendFile($event)">
                       </app-webcam>
                     </div>

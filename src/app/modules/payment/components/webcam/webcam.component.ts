@@ -27,6 +27,7 @@ export class WebcamComponent implements OnInit {
   modalRef?: BsModalRef;
 
   @Output() fileOutput = new EventEmitter<File>();
+  @Output() loading = new EventEmitter<boolean>();
 
   constructor(
     private deviceService: DeviceDetectorService,
@@ -55,25 +56,32 @@ export class WebcamComponent implements OnInit {
   }
 
   handleMobileImage(event) {
+    this.loading.emit(true);
     if (event.target.files.length > 0) {
       console.log('received Mobile image as file', event);
       const file = event.target.files[0];
       if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
         this.readFileAsDataUriAndCompress(file);
       } else {
+        this.loading.emit(false);
         this.fileOutput.emit(file);
       }
     }
   }
 
   handleDesktopImage(event): void {
+    this.loading.emit(true);
     if (event.imageAsBase64) { // Check for webcam capture before we check upload from file system
       const webcamImage: WebcamImage = event;
       console.log('received Desktop image as uri', event);
-      const file = webCamURItoFile(webcamImage);
+      const file = webCamURItoFile(webcamImage.imageAsDataUrl, 'webcam card capture');
       if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
-        this.compressFile(webcamImage.imageAsBase64, 'webcam card capture');
+        this.imageCompress.getOrientation(event.imageAsBase64).then(orientation => {
+          console.log('orientation : ', orientation);
+          this.compressFile(webcamImage.imageAsBase64, 'webcam card capture', orientation);
+        });
       } else {
+        this.loading.emit(false);
         this.fileOutput.emit(file);
       }
     } else if (event.target.files.length > 0) {
@@ -82,6 +90,7 @@ export class WebcamComponent implements OnInit {
       if (file.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
         this.readFileAsDataUriAndCompress(file);
       } else {
+        this.loading.emit(false);
         this.fileOutput.emit(file);
       }
     }
@@ -91,27 +100,32 @@ export class WebcamComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const localUrl = e.target.result;
-      this.compressFile(localUrl, file.name);
+      this.imageCompress.getOrientation(localUrl).then(orientation => {
+        console.log('orientation : ', orientation);
+        this.compressFile(localUrl, file.name, orientation);
+      });
     };
     reader.readAsDataURL(file);
   }
 
-  compressFile(image, fileName) {
+  compressFile(image, fileName, orientation?) {
     console.log('Size in bytes is now:', this.imageCompress.byteCount(image));
-    const imageName = fileName;
+    orientation = orientation ? orientation : CONSTANT.PAYMENT_CARD_IMAGE.ORIENTATION;
+    const imageFileName = fileName;
     this.imageCompress.compressFile(
       image,
-      CONSTANT.PAYMENT_CARD_IMAGE.ORIENTATION,
+      orientation,
       CONSTANT.PAYMENT_CARD_IMAGE.COMPRESS_QUALITY,
       CONSTANT.PAYMENT_CARD_IMAGE.COMPRESS_RATIO
     ).then(result => {
       const compressedImageUri = result;
       console.log('Size in bytes after compression:', this.imageCompress.byteCount(compressedImageUri));
-      const imageFile = new File([compressedImageUri], imageName, {type: CONSTANT.PAYMENT_CARD_IMAGE.TYPE});
+      const imageFile = webCamURItoFile(compressedImageUri, imageFileName);
       console.log('Compressed file : ' + imageFile);
       if (imageFile.size > CONSTANT.PAYMENT_CARD_IMAGE.MAX_FILE_SIZE) {
-        this.compressFile(imageFile, imageFile.name);
+        this.compressFile(result, imageFile.name, orientation);
       } else {
+        this.loading.emit(false);
         this.fileOutput.emit(imageFile);
       }
     });
