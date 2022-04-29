@@ -1,7 +1,3 @@
-import React, { Component } from 'react';
-import { View, Platform, TouchableOpacity, Text } from 'react-native';
-import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
-
 const app = angular.module('app', ['react']);
 
 app.controller('helloController', function($scope) {
@@ -13,33 +9,32 @@ app.controller('helloController', function($scope) {
   }
 });
 
-var CardIOExample = React.createClass({
 
-  componentWillMount() {
-    if (Platform.OS === 'ios') {
-      CardIOUtilities.preload()
+/** @jsx React.DOM */
+app.factory('HelloComponent', function($filter) {
+  return React.createClass({
+    propTypes: {
+      person: React.PropTypes.object.isRequired
+    },
+    scanCard: () => {
+      CardIOModule.scanCard()
+        .then(card => {
+          // the scanned card
+        })
+        .catch(() => {
+          // the user cancelled
+        })
+    },
+    render: function() {
+      return (
+        `<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <TouchableOpacity onPress={this.scanCard.bind(this)}>
+            <Text>Scan card!</Text>
+          </TouchableOpacity>
+        </View>`
+      );
     }
-  }
+  });
+});
 
-  scanCard() {
-    CardIOModule.scanCard()
-      .then(card => {
-        // the scanned card
-      })
-      .catch(() => {
-        // the user cancelled
-      })
-  }
-
-  render: function() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity onPress={this.scanCard.bind(this)}>
-          <Text>Scan card!</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-})
-app.value('CardIOExample ', CardIOExample);
+// app.value('CardIOExample ', CardIOExample);
