@@ -62,6 +62,8 @@ export class CreditCardFormComponent implements OnInit {
   }
 
   sendFile(file) {
+    // gonative.cardIO.scanCard({"callbackFunction":processCard});
+
     console.log('Send File :', file);
     this.paymentService.postCardFile(file).toPromise().then((res: any) => {
       console.log(res);

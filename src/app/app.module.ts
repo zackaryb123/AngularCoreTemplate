@@ -32,8 +32,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import {PaymentModule} from './modules/payment/payment.module';
 import {P403Component} from './views/error/403.component';
+import {PaymentModule} from '../modules/payment/payment.module';
 
 @NgModule({
   imports: [

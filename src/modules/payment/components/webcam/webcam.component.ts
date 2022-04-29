@@ -158,4 +158,50 @@ export class WebcamComponent implements OnInit {
   isDesktopCameraAccess() {
     return this.isDesktop && this.cameraDetected;
   }
+
+  scanCard = function() {
+    const cardIOResponseFields = [
+      'card_type',
+      'redacted_card_number',
+      'card_number',
+      'expiry_month',
+      'expiry_year',
+      'cvv',
+      'zip'
+    ];
+
+    const onCardIOComplete = function(response) {
+      for (let i = 0, len = cardIOResponseFields.length; i < len; i++) {
+        const field = cardIOResponseFields[i];
+        console.log(field + ': ' + response[field]);
+      }
+    };
+
+    const onCardIOCancel = function() {
+      console.log('card.io scan cancelled');
+    };
+
+    const onCardIOCheck = function (canScan) {
+      console.log('card.io canScan? ' + canScan);
+      const scanBtn = this.scanBtn.scope();
+      // var scanBtn = document.getElementById("scanBtn");
+      if (!canScan) {
+        scanBtn.innerHTML = 'Manual entry';
+      }
+    };
+
+    // CardIO.scan({
+    //     'collect_expiry': true,
+    //     'collect_cvv': false,
+    //     'collect_zip': false,
+    //     'shows_first_use_alert': true,
+    //     'disable_manual_entry_buttons': false
+    //   },
+    //   onCardIOComplete,
+    //   onCardIOCancel
+    // );
+
+    // CardIO.canScan(onCardIOCheck);
+  };
+
 }
